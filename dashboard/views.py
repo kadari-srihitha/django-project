@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from google import genai
+import google.generativeai as genai
 import markdown_it
 
 from doctors.models import doctor
