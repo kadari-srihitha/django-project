@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medha HMS AI Chat</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 45%, #5c6bc0 100%);
+            color: #222;
+        }
+        .page-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .chat-card {
+            background: #ffffffee;
+            border-radius: 24px;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+        .chat-header {
+            padding: 30px 30px 20px;
+            background: #3f51b5;
+            color: white;
+            text-align: center;
+        }
+        .chat-header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 0.02em;
+        }
+        .chat-header p {
+            margin: 12px auto 0;
+            max-width: 700px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+        .chat-body {
+            display: grid;
+            gap: 24px;
+            padding: 30px;
+        }
+        .conversation {
+            display: grid;
+            gap: 18px;
+            max-height: 520px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+        .interaction {
+            padding: 18px 20px;
+            border-radius: 18px;
+            line-height: 1.65;
+            word-break: break-word;
+            border: 1px solid transparent;
+        }
+        .interaction strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.98rem;
+        }
+        .question {
+            background: #e8f0fe;
+            border-color: #90caf9;
+            color: #0f3057;
+            align-self: end;
+        }
+        .response {
+            background: #f5f0ff;
+            border-color: #b39ddb;
+            color: #2a1a5e;
+        }
+        .response em {
+            color: #5e35b1;
+        }
+        .placeholder {
+            opacity: 0.7;
+        }
+        .chat-form {
+            display: grid;
+            gap: 16px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 140px;
+            border-radius: 16px;
+            border: 1px solid #c5cae9;
+            padding: 18px;
+            resize: vertical;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #3f51b5;
+            box-shadow: 0 0 0 4px rgba(63, 81, 181, 0.12);
+        }
+        button {
+            width: fit-content;
+            align-self: flex-end;
+            padding: 14px 26px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #283593 0%, #5c6bc0 100%);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 16px 28px rgba(33, 150, 243, 0.24);
+        }
+        @media (max-width: 720px) {
+            .page-wrap {
+                padding: 20px 16px;
+            }
+            .chat-header h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+        <div class="chat-card">
+            <div class="chat-header">
+                <h1>Medha AI Chat</h1>
+                <p>Ask a question about your hospital management data and receive an answer from Medha AI.</p>
+            </div>
+            <div class="content">
+            <a href="/dashboard/" class="back-btn">← Back to Dashboard</a>
+            <div class="chat-body">
+                <div class="conversation">
+                    {% if user_query %}
+                        <div class="interaction question">
+                            <strong>You asked:</strong>
+                            {{ user_query }}
+                        </div>
+                    {% endif %}
+
+                    {% if ai_response %}
+                        <div class="interaction response">
+                            <strong>Medha AI answer:</strong>
+                            {{ ai_response|safe }}
+                        </div>
+                    {% else %}
+                        <div class="interaction response placeholder">
+                            <strong>Medha AI answer:</strong>
+                            Ask a question and Medha AI will answer right here.
+                        </div>
+                    {% endif %}
+                </div>
+
+                <form method="post" class="chat-form">
+                    {% csrf_token %}
+                    <textarea name="query" placeholder="Type your question for Medha AI here..." required>{{ user_query }}</textarea>
+                    <button type="submit">Ask Medha AI</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

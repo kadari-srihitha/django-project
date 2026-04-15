@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-description {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Individual card colors */
+        .card-patients {
+            border-top: 5px solid #3498db;
+        }
+
+        .card-patients:hover {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .card-patients:hover .card-title,
+        .card-patients:hover .card-description {
+            color: white;
+        }
+
+        .card-doctors {
+            border-top: 5px solid #e74c3c;
+        }
+
+        .card-doctors:hover {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        .card-doctors:hover .card-title,
+        .card-doctors:hover .card-description {
+            color: white;
+        }
+
+        .card-appointments {
+            border-top: 5px solid #2ecc71;
+        }
+
+        .card-appointments:hover {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+
+        .card-appointments:hover .card-title,
+        .card-appointments:hover .card-description {
+            color: white;
+        }
+
+        .card-logout {
+            border-top: 5px solid #f39c12;
+        }
+
+        .card-logout:hover {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        .card-logout:hover .card-title,
+        .card-logout:hover .card-description {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 30px 20px;
+            }
+
+            .card-icon {
+                font-size: 3em;
+            }
+
+            .card-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Hospital Management System</h1>
+            <p>Welcome to your dashboard</p>
+        </div>
+
+        <div class="cards-grid">
+            <a href="/patients/" class="card card-patients">
+                <div class="card-icon">👥</div>
+                <div class="card-title">Patients</div>
+                <div class="card-description">View and manage all patients</div>
+            </a>
+
+            <a href="/doctors/" class="card card-doctors">
+                <div class="card-icon">👨‍⚕️</div>
+                <div class="card-title">Doctors</div>
+                <div class="card-description">View and manage all doctors</div>
+            </a>
+
+            <a href="/appointments/" class="card card-appointments">
+                <div class="card-icon">📅</div>
+                <div class="card-title">Appointments</div>
+                <div class="card-description">View and manage appointments</div>
+            </a>
+            <a href="/dashboard/ai" class="card card-patients">
+                <div class="card-icon">👥</div>
+                <div class="card-title">HMS AI</div>
+                <div class="card-description">View and manage all patients</div>
+            </a>
+
+            <a href="/logout/" class="card card-logout">
+                <div class="card-icon">🚪</div>
+                <div class="card-title">Logout</div>
+                <div class="card-description">Sign out from your account</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

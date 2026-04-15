@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medha Hospital - Quality Healthcare</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .navbar {
+            background: #2c3e50;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar .nav-links li {
+            margin-left: 30px;
+        }
+
+        .navbar .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            background: #34495e;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero .container {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .specialties {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .specialties .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .specialties h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .specialty-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .specialty-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .specialty-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .specialty-card p {
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .specialties-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Medha Hospital</a>
+            <ul class="nav-links">
+                <li><a href="/contact/">Contact</a></li>
+                <li><a href="/login/">Login</a></li>
+                <li><a href="/signup/">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to Medha Hospital</h1>
+            <p>Providing exceptional healthcare services with compassion and excellence. Your health is our priority.</p>
+            <a href="#specialties" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <section id="specialties" class="specialties">
+        <div class="container">
+            <h2>Our Specialties</h2>
+            <div class="specialties-grid">
+                <div class="specialty-card">
+                    <div class="icon">🫀</div>
+                    <h3>Cardiology</h3>
+                    <p>Advanced heart care with state-of-the-art technology and experienced cardiologists.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="icon">🧠</div>
+                    <h3>Neurology</h3>
+                    <p>Comprehensive neurological care for brain and nervous system disorders.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="icon">🦴</div>
+                    <h3>Orthopedics</h3>
+                    <p>Expert treatment for bone, joint, and musculoskeletal conditions.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="icon">👶</div>
+                    <h3>Pediatrics</h3>
+                    <p>Specialized healthcare for infants, children, and adolescents.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="icon">🩺</div>
+                    <h3>Internal Medicine</h3>
+                    <p>Comprehensive adult healthcare focusing on prevention and treatment.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="icon">🦷</div>
+                    <h3>Dentistry</h3>
+                    <p>Complete dental care services for healthy smiles and oral health.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
