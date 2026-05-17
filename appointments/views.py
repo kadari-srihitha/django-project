@@ -11,6 +11,29 @@ def appointment_list(request):
       return render(request, 'appointments.html',  {'appointments': appointments})
 
 
+def appointment_create(request):
+      patients = patient.objects.all()
+      doctors = doctor.objects.all()
+      if request.method == 'POST':
+            patient_id = int(request.POST.get('patient'))
+            doctor_id = int(request.POST.get('doctor'))
+            appointment_time_value = request.POST.get('appointment_time')
+            appointment_status = request.POST.get('appointment_status')
+            if appointment_time_value:
+                  appointment_time = datetime.strptime(appointment_time_value, '%Y-%m-%dT%H:%M')
+                  Appointment.objects.create(
+                        patient_id=patient_id,
+                        doctor_id=doctor_id,
+                        appointment_time=appointment_time,
+                        appointment_status=appointment_status,
+                  )
+                  return redirect('appointment_list')
+      return render(request, 'appointment_create.html', {
+            'patients': patients,
+            'doctors': doctors,
+      })
+
+
 def appointment_edit(request, appointment_id):
       appointment_obj = get_object_or_404(Appointment, id=appointment_id)
       patients = patient.objects.all()

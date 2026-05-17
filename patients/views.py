@@ -31,10 +31,10 @@ def patient_create(request):
         form = PatientForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/patients/')
+            return redirect('patient_list')
     else:
         form = PatientForm()
-    return render(request, "patient_create.html", {'form': form})
+    return render(request, "create.html", {'form': form})
 
 from rest_framework.generics import ListCreateAPIView
 from .serializers import PatientSerializer

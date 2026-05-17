@@ -6,6 +6,15 @@ def doctor_list(request):
       return render(request, 'doctors.html',  {'doctors': doctors})
 
 
+def doctor_create(request):
+      if request.method == 'POST':
+            name = request.POST.get('name')
+            specialization = request.POST.get('specialization')
+            doctor.objects.create(name=name, specialization=specialization)
+            return redirect('doctor_list')
+      return render(request, 'doctor_create.html')
+
+
 def doctor_edit(request, doctor_id):
       doctor_obj = get_object_or_404(doctor, id=doctor_id)
       if request.method == 'POST':
