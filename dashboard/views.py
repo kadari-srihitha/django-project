@@ -4,21 +4,21 @@ import google.generativeai as genai
 import markdown_it
 
 from doctors.models import doctor
-from medhahms import settings
 from patients.models import patient
-  
-# Create your views here.
+from medhahms import settings
+
+
 @login_required
 def dashboard_home(request):
     return render(request, "dashboard_home.html")
+
+
 @login_required
 def dashboard_ai(request):
     if request.method == 'POST':
         print("POST DATA:", request.POST)
 
         user_query = request.POST.get('query')
-
-        client = genai.Client(api_key=settings.GEMINI_API_KEY)
 
         doctors = list(doctor.objects.all().values())
         patients = list(patient.objects.all().values())
@@ -37,30 +37,22 @@ User Question:
 {user_query}
 """
 
-        response = None 
-
         try:
-            response = client.models.generate_content(
-                model="gemini-3-flash-preview",
-                contents=final_query,
-            )
+            # Configure Gemini
+            genai.configure(api_key=settings.GEMINI_API_KEY)
 
-            print("FULL RESPONSE:", response)
+            # Create model
+            model = genai.GenerativeModel('gemini-1.5-flash')
 
-            
-            if hasattr(response, "text") and response.text:
-                result = response.text
-            else:
-                try:
-                    result = response.candidates[0].content.parts[0].text
-                except:
-                    result = " No response from AI"
+            # Generate response
+            response = model.generate_content(final_query)
+
+            result = response.text
 
         except Exception as e:
             print("ERROR:", str(e))
             result = f"Error: {str(e)}"
 
-       
         md = markdown_it.MarkdownIt()
         answer = md.render(result)
 
@@ -69,7 +61,4 @@ User Question:
             'user_query': user_query,
         })
 
-    return render(request, "dashboard_ai.html", {
-        'ai_response': None,
-        'user_query': None,
-    })
+    return render(request, "dashboard_ai.html")

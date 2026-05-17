@@ -28,8 +28,15 @@ SECRET_KEY = 'django-insecure-8e)wued+6q3=468vsa5pre6+8saxt(ldn-l)ql6yc$wg!(tk%g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "django-project-medh-hms.onrender.com",
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://django-project-medh-hms.onrender.com",
+]
 
 # Application definition
 
